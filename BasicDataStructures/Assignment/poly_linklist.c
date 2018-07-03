@@ -1,13 +1,25 @@
+/*************************SOLVE DATA STRUCTURES PROBLEM*******************************
+When            Who         What
+29/04/2018      Phong      Assignment Basic Data Structures
+
+*************************************************************************************/
+
+/*
+** Description:
+	Sum and multi of two polys. 
+*/
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
 
-struct PolyNode
+struct _polyNode
 {
 	int coeff;
 	int pow;
-	PolyNode* next;
+	struct _polyNode* next;
 };
+
+typedef struct _polyNode PolyNode;
 
 PolyNode* makeNewPolyNode(int coeff, int pow){
 	PolyNode* temp = NULL;
@@ -27,7 +39,7 @@ PolyNode* initAPoly(PolyNode* p){
 	int i = 0;
 	char c;
 	
-	while (true)
+	while (1)
 	{
 		c = getchar();
 		if (c == '\n') break;
@@ -161,8 +173,8 @@ PolyNode* mulOfTwoPoly(PolyNode* p1, PolyNode* p2){
 	}
 
 	PolyNode* mul = NULL;
-
-	for (int i = 0; i < sz; i++){
+	int i = 0;
+	for (; i < sz; i++){
 		if (a[i] != 0){
 			mul = insert(mul, a[i], i);
 		}
@@ -189,8 +201,6 @@ int main(){
 	PolyNode* mul = mulOfTwoPoly(poly1, poly2);
 	printf("Poly1 * Poly2 = ");
 	duyetPoly(mul);
-
-
-	_getch();
+	getch();
 	return 0;
 }
